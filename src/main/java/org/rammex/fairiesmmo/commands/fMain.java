@@ -18,7 +18,14 @@ public class fMain implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender Sender, Command cmd, String arg0, String[] args) {
         Player player = (Player) Sender;
-        fmain.getfmainui(player);
+        if(hasclass(player)) {
+            fmain.getfmainui(player);
+        }
         return false;
+    }
+
+
+    private boolean hasclass(Player player) {
+        return !"none".equals(this.plugin.getConfigg().getString("players." + player.getName() + ".class"));
     }
 }
